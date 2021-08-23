@@ -19,7 +19,7 @@ use
 	DataTables\Editor\ValidateOptions;
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'productos' )
+Editor::inst( $db, 'productos','id' )
 	->fields(
 		Field::inst( 'nombre' )
 			->validator( Validate::notEmpty( ValidateOptions::inst()
@@ -30,22 +30,22 @@ Editor::inst( $db, 'productos' )
 			->setFormatter( Format::ifEmpty(null) ),
 		Field::inst( 'existencia' )
 			->validator( Validate::numeric() )
-			->setFormatter( Format::ifEmpty(null) ),
+			->setFormatter( Format::ifEmpty(null) )
 		)
 		->join(
 			Mjoin::inst( 'files' )
-				->link( 'producto.id', 'productos_files.producto_id' )
+				->link( 'productos.id', 'productos_files.producto_id' )
 				->link( 'files.id', 'productos_files.file_id' )
 				->fields(
 					Field::inst( 'id' )
-						->upload( Upload::inst( $_SERVER['DOCUMENT_ROOT'].'/ecommerce/upload/__ID__.__EXTN__' )
+						->upload( Upload::inst( $_SERVER['DOCUMENT_ROOT'].'/opt/lampp/htdocs/ecommerce/upload/__ID__.__EXTN__' )
 							->db( 'files', 'id', array(
 								'filename'    => Upload::DB_FILE_NAME,
 								'filesize'    => Upload::DB_FILE_SIZE,
 								'web_path'    => Upload::DB_WEB_PATH,
 								'system_path' => Upload::DB_SYSTEM_PATH
 							) )
-							->validator( Validate::fileSize( 5000000, 'Files must be smaller that 500K' ) )
+							->validator( Validate::fileSize( 5000000, 'Files must be smaller that 5M' ) )
 							->validator( Validate::fileExtensions( array( 'png', 'jpg', 'jpeg', 'gif' ), "Please upload an image" ) )
 						)
 				)

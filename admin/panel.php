@@ -3,7 +3,7 @@
 <?php
   session_start();
   session_regenerate_id(true); //previene hijacking
-  if(isset($_REQUEST['sesion']) && $_REQUEST['sesion']=="cerrar"){
+  if(isset($_REQUEST['sesion']) && $_REQUEST['sesion'] == "cerrar"){
     session_destroy();
     header("location: index.php");
   }
@@ -39,10 +39,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <!-- DataTables -->
-  <!-- este se usaba hasta video 11 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"> -->
+  <!-- <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"> -->
 
   <!-- <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
@@ -248,8 +249,8 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- DataTables  & Plugins -->
-<!-- este comentario estaba hasta video 11 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> -->
+<!-- <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> --> -->
 
 <!-- <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -262,12 +263,12 @@
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> -->
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
-<script src="https://cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"></script>
-<script src="js/dataTables.editor.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"> </script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"> </script>
+<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"> </script>
+<script src="https://cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"> </script>
+<script src="js/dataTables.editor.min.js"> </script>
 
   
 
@@ -297,7 +298,7 @@
                 label: "Existencia:",
                 name: "existencia"
             }, {
-                label: "Imágenes:",
+                label: "Imagenes:",
                 name: "files[].id",
                 type: "uploadMany",
                 display: function ( fileId, counter ) {
@@ -314,23 +315,24 @@
         ajax: "controllers/productos.php",
         columns: [
             { data: "nombre" },
-            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
             { data: "existencia" },
+            {
+                data: "files",
+                render: function ( d ) {
+                    return d.length ?
+                        d.length+' imagen(es)' :
+                        'No hay imágenes';
+                },
+                title: "Imagen"
+            }
         ],
         select: true,
         buttons: [
             { extend: "create", editor: editor },
             { extend: "edit",   editor: editor },
             { extend: "remove", editor: editor },
-            {
-                data: "files",
-                render: function ( d ) {
-                    return d.length ?
-                        d.length+' imagen(es)' :
-                        'No hay imagen(es)';
-                },
-                title: "Imagen"
-            }
+            
         ]
     } );
   });

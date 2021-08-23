@@ -29,10 +29,10 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Existencia</th>
-                    <th>Imagen(es)</th>
+                    <th>Imágenes</th>
                   </tr>
                   </thead>
-                  
+                
                 </table>
               </div>
               <!-- /.card-body -->
