@@ -34,6 +34,8 @@
                             <a href="#" class="nav-link">Contact</a>
                         </li>
                     </ul>
+
+
                     <!-- SEARCH FORM -->
                     <form class="form-inline ml-3">
                         <div class="input-group input-group-sm">
@@ -133,6 +135,33 @@
                         </li>
                     </ul>
                 </nav>
+                <div class = "row mt-1">
+                    <?php
+                        include_once "admin/db_ecommerce.php";
+                        $con =mysqli_connect ($host,$user,$pass,$db);
+                        $query="SELECT p.id, p.nombre, p.precio, p.existencia, f.web_path 
+                        from 
+                        productos as p
+                        inner join productos_files as pf on pf.producto_id = p.id
+                        inner join files as f on f.id = pf.file_id 
+                        group by p.id ";
+                        $res=mysqli_query($con,$query);
+                        while($row = mysqli_fetch_assco($res)) {
+                        ?>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class = "card border-primary">
+                                    <img class="card-img-top img-thumbnail" src="<?php echo $row['web_path'] ?>" alt="">
+                                    <div class="card-body">
+                                        <h2 class="card-title"> <strong> <?php echo $row['nombre'] ?> </strong> </h2>
+                                        <p class="card-text"><strong>Precio:</strong> <?php echo $row['precio'] ?> </p>
+                                        <p class="card-text"><strong>Existencia:</strong> <?php echo $row['existencia'] ?> </p>
+                                        <a href="#" class="btn btn-primary" > Ver </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    ?>
             </div>
         </div>
     </div>
