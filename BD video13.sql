@@ -51,6 +51,14 @@ CREATE TABLE productos_files (
 
 
 
+--crear usuarios
+
+INSERT INTO `usuarios` (`id`, `email`, `pass`, `nombre`) VALUES (NULL, 'usuario1@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'usuario1')
+
+INSERT INTO `usuarios` (`id`, `email`, `pass`, `nombre`) VALUES (NULL, 'usuario2@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'usuario2')
+
+
+
 
 
 
