@@ -1,28 +1,52 @@
-
-
+<?php
+$id=mysqli_real_escape_string($con,$_REQUEST['id']??'');
+    $queryProducto = "SELECT id,nombre,precio,existencia from productos where id='$id'; ";
+    $resProducto=mysqli_query($con,$queryProducto);
+    $rowProducto=mysqli_fetch_assoc($resProducto);
+?>
 <!-- Default box -->
 <div class="card card-solid">
     <div class="card-body">
         <div class="row">
         <div class="col-12 col-sm-6">
-            <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+            <h3 class="d-inline-block d-sm-none"> <?php echo $rowProducto['nombre'] ?> </h3>
+            <?php
+            $queryImagenes="SELECT f.web_path 
+            from 
+            productos as p
+            inner join productos_files as pf on pf.producto_id = p.id
+            inner join files as f on f.id = pf.file_id 
+            where p.id='$id';
+            ";
+            $resPrimerImagen=mysqli_query($con,$queryImagenes);
+            $rowPrimerImagen=mysqli_fetch_assoc($resPrimerImagen);
+            ?>
             <div class="col-12">
-            <img src="admin/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
+                <img src=" <?php echo $rowPrimerImagen['web_path'] ?>  " class="product-image">
             </div>
             <div class="col-12 product-image-thumbs">
-            <div class="product-image-thumb active"><img src="admin/dist/img/prod-1.jpg" alt="Product Image"></div>
-            <div class="product-image-thumb" ><img src="admin/dist/img/prod-2.jpg" alt="Product Image"></div>
-            <div class="product-image-thumb" ><img src="admin/dist/img/prod-3.jpg" alt="Product Image"></div>
-            <div class="product-image-thumb" ><img src="admin/dist/img/prod-4.jpg" alt="Product Image"></div>
-            <div class="product-image-thumb" ><img src="admin/dist/img/prod-5.jpg" alt="Product Image"></div>
+                <?php
+                $resImagenes=mysqli_query($con,$queryImagenes);
+                while($rowImagenes = mysqli_fetch_assoc($resImagenes)){
+                ?>
+                    <div class="product-image-thumb active"><img src=" <?php echo $rowImagenes['web_path'] ?>  " ></div>
+                    <!-- <div class="product-image-thumb" ><img src="admin/dist/img/prod-2.jpg" alt="Product Image"></div>
+                    <div class="product-image-thumb" ><img src="admin/dist/img/prod-3.jpg" alt="Product Image"></div>
+                    <div class="product-image-thumb" ><img src="admin/dist/img/prod-4.jpg" alt="Product Image"></div>
+                    <div class="product-image-thumb" ><img src="admin/dist/img/prod-5.jpg" alt="Product Image"></div> -->
+                <?php
+                }
+                ?>
             </div>
         </div>
         <div class="col-12 col-sm-6">
-            <h3 class="my-3">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
-            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+            <h3 class="my-3"> <?php echo $rowProducto['nombre'] ?> </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dignissimos autem asperiores rem, assumenda molestias necessitatibus fuga ab tempora commodi ipsa perferendis quo expedita ipsum. Nobis a aliquid ullam totam!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dignissimos autem asperiores rem, assumenda molestias necessitatibus fuga ab tempora commodi ipsa perferendis quo expedita ipsum. Nobis a aliquid ullam totam!</p>
 
             <hr>
-            <h4>Available Colors</h4>
+            <h4>Existencias: <?php echo $rowProducto['existencia'] ?> </h4>
+            <!-- <h4>Available Colors</h4>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-default text-center active">
                 <input type="radio" name="color_option" id="color_option_a1" autocomplete="off" checked>
@@ -54,9 +78,9 @@
                 <br>
                 <i class="fas fa-circle fa-2x text-orange"></i>
             </label>
-            </div>
+            </div> -->
 
-            <h4 class="mt-3">Size <small>Please select one</small></h4>
+            <!-- <h4 class="mt-3">Size <small>Please select one</small></h4>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-default text-center">
                 <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
@@ -82,27 +106,27 @@
                 <br>
                 Xtra-Large
             </label>
-            </div>
+            </div> -->
 
             <div class="bg-gray py-2 px-3 mt-4">
-            <h2 class="mb-0">
-                $80.00
-            </h2>
-            <h4 class="mt-0">
-                <small>Ex Tax: $80.00 </small>
-            </h4>
+                <h2 class="mb-0">
+                    $<?php echo money_format("%i",$rowProducto['precio']) ?> 
+                </h2>
+                <!-- <h4 class="mt-0">
+                    <small>Ex Tax: $80.00 </small>
+                </h4> -->
             </div>
 
             <div class="mt-4">
-            <div class="btn btn-primary btn-lg btn-flat">
-                <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                Add to Cart
-            </div>
+                <div class="btn btn-primary btn-lg btn-flat">
+                    <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                    Add to Cart
+                </div>
 
-            <div class="btn btn-default btn-lg btn-flat">
-                <i class="fas fa-heart fa-lg mr-2"></i>
-                Add to Wishlist
-            </div>
+                <!-- <div class="btn btn-default btn-lg btn-flat">
+                    <i class="fas fa-heart fa-lg mr-2"></i>
+                    Add to Wishlist
+                </div> -->
             </div>
 
             <div class="mt-4 product-share">
