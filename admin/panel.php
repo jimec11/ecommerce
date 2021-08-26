@@ -15,11 +15,9 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>My Ecommerce </title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -38,11 +36,14 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
   <!-- DataTables -->
   <!-- <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"> -->
 
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> -->
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
@@ -138,9 +139,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fa fa-shopping-cart " aria-hidden="true"></i>
+              <i class="fa fa-shopping-cart nav-icon" aria-hidden="true"></i>
               <p>
                 Ecommerce
               </p>
@@ -244,15 +245,15 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
 <!-- DataTables  & Plugins -->
 <!-- <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> --> -->
 
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<!-- <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
@@ -261,7 +262,7 @@
 <script src="plugins/pdfmake/vfs_fonts.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> -->
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"> </script>
@@ -271,9 +272,8 @@
 <script src="js/dataTables.editor.min.js"> </script>
 
   
-
+ 
 <script>
-  var editor;
   $(function () {
     $('#example2').DataTable({
       "paging": true,
@@ -285,7 +285,7 @@
       "responsive": true,
     });
 
-    editor = new $.fn.dataTable.Editor( {
+    var editor = new $.fn.dataTable.Editor( {
         ajax: "controllers/productos.php",
         table: "#tablaProductos",
         fields: [ {
@@ -298,7 +298,7 @@
                 label: "Existencia:",
                 name: "existencia"
             }, {
-                label: "Imagenes:",
+                label: "Imágenes:",
                 name: "files[].id",
                 type: "uploadMany",
                 display: function ( fileId, counter ) {
@@ -306,11 +306,10 @@
                 },
                 noFileText: 'No hay imágenes.'
             }
-
         ]
     } );
  
-    $('#tablaProductos').DataTable( {
+    var table = $('#tablaProductos').DataTable( {
         dom: "Bfrtip",
         ajax: "controllers/productos.php",
         columns: [
@@ -331,7 +330,7 @@
         buttons: [
             { extend: "create", editor: editor },
             { extend: "edit",   editor: editor },
-            { extend: "remove", editor: editor } 
+            { extend: "remove", editor: editor }
         ]
     } );
   });
@@ -346,7 +345,7 @@
         var link=$(this).attr("href");
         window.location=link;
       }
-    })
+    });
   });
 </script>
 <!-- prueba -->
