@@ -118,15 +118,24 @@ $id=mysqli_real_escape_string($con,$_REQUEST['id']??'');
             </div>
 
             <div class="mt-4">
-                <div class="btn btn-primary btn-lg btn-flat">
+                <button class="btn btn-primary btn-lg btn-flat" id="agregarCarrito" 
+                data-id="<?php echo $_REQUEST['id'] ?> "
+                data-nombre="<?php echo $rowProducto['nombre'] ?>"
+                data-web_path="<?php echo $rowPrimerImagen['web_path'] ?>"
+                >
                     <i class="fas fa-cart-plus fa-lg mr-2"></i>
                     Add to Cart
-                </div>
+            </button>
 
                 <!-- <div class="btn btn-default btn-lg btn-flat">
                     <i class="fas fa-heart fa-lg mr-2"></i>
                     Add to Wishlist
                 </div> -->
+            </div>
+
+            <div class="mt-4">
+                Cantidad
+                <input type="number" class="form-control" id="cantidadProductos">
             </div>
 
             <div class="mt-4 product-share">
