@@ -135,7 +135,7 @@ $id=mysqli_real_escape_string($con,$_REQUEST['id']??'');
 
             <div class="mt-4">
                 Cantidad
-                <input type="number" class="form-control" id="cantidadProductos">
+                <input type="number" class="form-control" id="cantidadProducto" value="1">
             </div>
 
             <div class="mt-4 product-share">

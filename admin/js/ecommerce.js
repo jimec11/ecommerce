@@ -11,7 +11,8 @@ $(document).ready(function () {
             data: {"id":id,"nombre":nombre,"web_path":web_path,"cantidad":cantidad},
             dataType: "json",
             success: function(response){
-
+                var cantidad=Object.keys(response).length;
+                $("#badgeProducto").text(cantidad);
             }
         });
     });
