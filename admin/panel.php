@@ -269,7 +269,7 @@
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"> </script>
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"> </script>
 <script src="https://cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"> </script>
-<script src="js/dataTables.editor.min.js"> </script>
+<!-- <script src="js/dataTables.editor.min.js"> </script> -->
 
   
  
