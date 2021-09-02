@@ -90,7 +90,7 @@ $con =mysqli_connect ($host,$user,$pass,$db);
                     </li>
                     <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
+                        <a class="nav-link" data-toggle="dropdown" href="#" id="iconoCarrito" >
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -129,6 +129,9 @@ $con =mysqli_connect ($host,$user,$pass,$db);
             }
             if($modulo=="detalleproducto"){
                 include_once "detalleProducto.php";
+            }
+            if($modulo=="carrito"){
+                include_once "carrito.php";
             }
             ?>
         </div>
