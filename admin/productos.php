@@ -17,7 +17,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -32,18 +31,33 @@
                     <th>Imágenes</th>
                   </tr>
                   </thead>
-                
+                    <!--
+                    <tbody>
+                    <?php
+                    $query = "SELECT id,nombre,precio,existencia from productos;  ";
+                    $res=mysqli_query($con,$query);
+                    while($row=mysqli_fetch_assoc($res)){
+                        ?>
+                        <tr>
+                            <td> <?php echo $row['nombre'] ?> </td>
+                            <td> <?php echo $row['precio'] ?> </td>
+                            <td> <?php echo $row['existencia'] ?> </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    -->
+                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>

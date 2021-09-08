@@ -1,5 +1,7 @@
 <div class = "row mt-1">
 <?php
+    include_once "admin/db_ecommerce.php";
+    $con =mysqli_connect ($host,$user,$pass,$db);
     $where = "where 1=1";
     $nombre=mysqli_real_escape_string($con, $_REQUEST['nombre']??'');
     if(empty($nombre)==false){
@@ -33,6 +35,7 @@
     group by p.id 
     $limite
     ";
+
     $res=mysqli_query($con,$query);
     while($row = mysqli_fetch_assoc($res)) {
     ?>
@@ -70,7 +73,7 @@ if($totalPaginas>0){
     ?>
 
     <?php
-    for($i=1;$i=$totalPaginas;$i++){
+    for($i=1;$i==$totalPaginas;$i++){
     ?>
     <li class="page-item <?php echo ($paginaSel==$i)?" active ":" "; ?> ">
         <a class="page-link" href="index.php?modulo=productos&pagina=<?php echo $i; ?> "> <?php echo $i; ?> </a></li>

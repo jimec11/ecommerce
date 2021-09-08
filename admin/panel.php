@@ -275,46 +275,20 @@
  
 <script>
   $(function () {
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
 
-    var editor = new $.fn.dataTable.Editor( {
-        ajax: "controllers/productos.php",
-        table: "#tablaProductos",
-        fields: [ {
-                label: "Nombre:",
-                name: "nombre"
-            }, {
-                label: "Precio:",
-                name: "precio"
-            }, {
-                label: "Existencia:",
-                name: "existencia"
-            }, {
-                label: "Imágenes:",
-                name: "files[].id",
-                type: "uploadMany",
-                display: function ( fileId, counter ) {
-                    return '<img src="'+editor.file( 'files', fileId ).web_path+'"/>';
-                },
-                noFileText: 'No hay imágenes.'
-            }
-        ]
-    } );
- 
-    var table = $('#tablaProductos').DataTable( {
-        dom: "Bfrtip",
+    $('#tablaProductos').DataTable({
+      paging: true,
+      lengthChange: false,
+      searching: true,
+      ordering: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
+        dom: "lfrtip",
         ajax: "controllers/productos.php",
         columns: [
             { data: "nombre" },
-            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
+            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '₡' ) },
             { data: "existencia" },
             {
                 data: "files",
@@ -324,15 +298,11 @@
                         'No hay imágenes';
                 },
                 title: "Imagen"
-            }
+            },
         ],
         select: true,
-        buttons: [
-            { extend: "create", editor: editor },
-            { extend: "edit",   editor: editor },
-            { extend: "remove", editor: editor }
-        ]
-    } );
+    });
+
   });
 </script>
 

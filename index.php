@@ -41,7 +41,7 @@ $con =mysqli_connect ($host,$user,$pass,$db);
                 </ul>
 
                 <!-- SEARCH FORM -->
-                <form class="form-inline ml-3" action="index.php?" >
+                <form class="form-inline ml-3" action="index.php" > <!-- ?modulo=productos-->
                     <div class="input-group input-group-sm">
                         <input class="form-control form-control-navbar bg-gray" type="search" placeholder="Search" aria-label="Search" name="nombre" value="<?php echo $_REQUEST['nombre']??''; ?>" >
                         <input type="hidden" name="modulo" value="productos">
