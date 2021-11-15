@@ -77,6 +77,10 @@ $(document).ready(function () {
                     <td>${element['nombre']}</td>
                     <td>
                         ${element['cantidad']}
+                        <input type="hidden" name="id[]" value="${element['id']}">
+                        <input type="hidden" name="cantidad[]" value="${element['cantidad']}">
+                        <input type="hidden" name="precio[]" value="${precio.toFixed(2)}">
+                    
                     </td>
                     <td>$${precio.toFixed(2)}</td>
                     <td>$${totalProd.toFixed(2)}</td>

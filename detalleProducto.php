@@ -3,6 +3,7 @@ $id=mysqli_real_escape_string($con,$_REQUEST['id']??'');
     $queryProducto = "SELECT id,nombre,precio,existencia from productos where id='$id'; ";
     $resProducto=mysqli_query($con,$queryProducto);
     $rowProducto=mysqli_fetch_assoc($resProducto);
+    // error_log(var_dump($rowProducto));
 ?>
 <!-- Default box -->
 <div class="card card-solid">
