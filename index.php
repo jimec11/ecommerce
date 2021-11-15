@@ -48,6 +48,9 @@
                 if($modulo=="carrito"){
                     include_once "carrito.php";
                 }
+                if($modulo=="envio"){
+                    include_once "envio.php";
+                }
             ?>
         </div>
     </div>
