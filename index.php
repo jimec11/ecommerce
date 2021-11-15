@@ -51,6 +51,9 @@
                 if($modulo=="envio"){
                     include_once "envio.php";
                 }
+                if($modulo=="pasarela"){
+                    include_once "pasarela.php";
+                }
             ?>
         </div>
     </div>
